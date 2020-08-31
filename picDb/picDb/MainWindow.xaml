@@ -5,8 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:picDb"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="445" Width="800" Background="Black" WindowStyle="SingleBorderWindow">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" Padding="5">
+            <MenuItem Header="File">
+                <MenuItem Header="Sync"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Edit"/>
+            <MenuItem Header="Options"/>
+            <MenuItem Header="Help" HorizontalAlignment="Stretch"/>
+        </Menu>
+        <StackPanel  DockPanel.Dock="Top" Orientation="Horizontal">
+            <TextBox x:Name="textBox" Text="Search.." TextWrapping="Wrap"/>
+            <Button x:Name="button" Content="Search" Width="Auto" HorizontalAlignment="Right"/>
+        </StackPanel>
+        
 
-    </Grid>
+        <ListBox x:Name="listBox" Height="100" DockPanel.Dock="Bottom" >
+            <ListBox.ItemsPanel>
+
+                <ItemsPanelTemplate>
+
+                    <StackPanel Orientation="Horizontal"/>
+
+                </ItemsPanelTemplate>
+
+            </ListBox.ItemsPanel>
+            <Image x:Name="image1" Height="100" Width="100" Source="/katze2.jpg"/>
+            <Image x:Name="image2" Height="100" Width="100" Source="/katze3.jpg"/>
+        </ListBox>
+
+        <TabControl x:Name="tabControl"   Width="112" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                <TabItem Header="TabItem">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="TabItem">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+        </TabControl>
+        <Image x:Name="image" Source="/katze.jpg" />
+        
+
+
+
+
+
+
+
+    </DockPanel>
 </Window>
