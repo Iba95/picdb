@@ -1,9 +1,6 @@
-﻿using picDb.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -17,16 +14,13 @@ using System.Windows.Shapes;
 namespace picDb
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaktionslogik für PictureListComponent.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PictureListComponent : UserControl
     {
-        private MainWindowViewModel _controller;
-        public MainWindow()
+        public PictureListComponent()
         {
-            _controller = new MainWindowViewModel();
             InitializeComponent();
-            this.DataContext = _controller;
         }
     }
 }

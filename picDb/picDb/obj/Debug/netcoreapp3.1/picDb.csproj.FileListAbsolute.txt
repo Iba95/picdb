@@ -17,3 +17,15 @@ C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netco
 C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\picDb.csproj.CoreCompileInputs.cache
 C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\picDb.genruntimeconfig.cache
 C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\picDb.csprojAssemblyReference.cache
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\Google.Protobuf.dll
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.dll
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\K4os.Compression.LZ4.Streams.dll
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\K4os.Hash.xxHash.dll
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\MySql.Data.dll
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\Renci.SshNet.dll
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\picDb.csproj.CopyComplete
