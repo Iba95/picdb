@@ -1,4 +1,5 @@
-﻿using System;
+﻿using picDb.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +19,26 @@ namespace picDb
     /// </summary>
     public partial class PictureListComponent : UserControl
     {
+        private MainWindowViewModel _controller;
         public PictureListComponent()
         {
+            _controller = new MainWindowViewModel();
             InitializeComponent();
+        }
+
+        private void PictureSelection_OnSelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (PictureSelection.SelectedItem is PictureViewModel)
+            {
+                if (((PictureViewModel)PictureSelection.SelectedItem) == null)
+                {
+                    MessageBox.Show("Picture is null");
+                }
+                else
+                {
+                    _controller.CurrentPicture = (PictureViewModel)PictureSelection.SelectedItem;
+                }
+            }
         }
     }
 }

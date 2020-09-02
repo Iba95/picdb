@@ -5,7 +5,7 @@ using System.Text;
 
 namespace picDb.ViewModels
 {
-    class PictureViewModel
+    public class PictureViewModel
     {
         public int ID { get; set; }
         public string FileName { get; set; }
@@ -15,7 +15,20 @@ namespace picDb.ViewModels
 
         public PictureViewModel(PictureModel picture)
         {
-            
+            //if (picture is PictureModel)
+            //{
+            //    IPTC = new IPTCViewModel(picture.IPTC);
+            //    EXIF = new EXIFViewModel(picture.EXIF);
+            //    Photographer = new PhotographerViewModel(picture.Photographer);
+            //}
+
+            if (picture != null)
+            {
+                ID = picture.ID;
+                FileName = picture.FileName;
+                string name = picture.FileName;
+                string creator = picture.IPTC.Creator;
+            }
         }
     }
 }

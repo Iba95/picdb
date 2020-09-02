@@ -9,29 +9,18 @@ namespace picDb.ViewModels
     public class MainWindowViewModel: INotifyPropertyChanged
     {
         private readonly BL _bl = new BL();
-        private string _title;
         private string _testImage;
+        private PictureViewModel _currentPicture;
 
+        public PictureListViewModel PicList { get; set; } = new PictureListViewModel();
+        public SearchViewModel Search { get; set; } = new SearchViewModel();
+        public PhotographerListViewModel PhotographerList { get; set; } = new PhotographerListViewModel();
 
         public MainWindowViewModel()
         {
-            Title = "PicDB";
-            string Folder = @"C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\pics\";
-
-            TestImage = Folder+_bl.getPicture(3).FileName;
-            _bl.getPictures();
-        }
-
-        public string Title
-        {
-            get
-            {
-                return _title;
-            }
-            set
-            {
-               _title = value;                
-            }
+            CurrentPicture = PicList.CurrentPicture;
+            //TestImage = _bl.getPicture(3).FileName;
+            //_bl.getPictures();
         }
 
         public string TestImage
@@ -43,6 +32,19 @@ namespace picDb.ViewModels
             set
             {
                 _testImage = value;
+            }
+        }
+        public PictureViewModel CurrentPicture
+        {
+            get => _currentPicture;
+            set
+            {
+                if (_currentPicture != value && value != null)
+                {
+                    _currentPicture = new PictureViewModel(_bl.getPicture(value.ID));
+                    ((PictureListViewModel)PicList).CurrentPicture = _currentPicture;                
+                    OnPropertyChanged(nameof(CurrentPicture));
+                }
             }
         }
 

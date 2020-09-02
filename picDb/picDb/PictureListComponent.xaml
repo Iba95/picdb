@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid DockPanel.Dock="Bottom">
-        <ListBox x:Name="listBox">
+        <!--<ListBox x:Name="listBox">
             <ListBox.ItemsPanel>
 
                 <ItemsPanelTemplate>
@@ -19,6 +19,28 @@
             </ListBox.ItemsPanel>
             <Image x:Name="image1" Height="100" Width="100" Source="/katze2.jpg"/>
             <Image x:Name="image2" Height="100" Width="100" Source="/katze3.jpg"/>
+        </ListBox>-->
+        <ListBox  ItemsSource="{Binding Path=PicList.Pics}" SelectedItem="{Binding CurrentPicture}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"
+                  ScrollViewer.VerticalScrollBarVisibility="Disabled" HorizontalAlignment="Stretch"
+                  Name="PictureSelection" SelectionChanged="PictureSelection_OnSelectionChanged">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"></VirtualizingStackPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <!--<Image Width="120" Height="120" Stretch="UniformToFill">-->
+                        <Image Width="120" Height="120" Stretch="UniformToFill">
+                            <Image.Source>
+                                <BitmapImage DecodePixelWidth="200" UriSource="{Binding FileName}" />
+                            </Image.Source>
+                        </Image>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
         </ListBox>
     </Grid>
 </UserControl>

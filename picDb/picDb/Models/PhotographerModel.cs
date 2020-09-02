@@ -6,7 +6,7 @@ using System.Text;
 
 namespace picDb.Models
 {
-    class PhotographerModel
+    public class PhotographerModel
     {
         public int ID { get; private set; }
 

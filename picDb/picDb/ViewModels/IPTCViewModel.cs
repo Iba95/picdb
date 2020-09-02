@@ -5,7 +5,7 @@ using System.Text;
 
 namespace picDb.ViewModels
 {
-    class IPTCViewModel
+    public class IPTCViewModel
     {
         public string Title { get; set; }
         public string Caption { get; set; }

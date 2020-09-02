@@ -4,7 +4,7 @@ using System.Text;
 
 namespace picDb.ViewModels
 {
-    class SearchViewModel
+    public class SearchViewModel
     {
     }
 }

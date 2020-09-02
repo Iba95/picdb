@@ -3,18 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace picDb
 {
     class BL
     {
         private DAL _dal;
-        private string Folder;
         public BL()
         {
             _dal = new DAL();
-            Folder = @"C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\pics";
+            sync();
         }
         public PictureModel getPicture(int ID)
         {
@@ -22,7 +20,7 @@ namespace picDb
         }
         public IEnumerable<PictureModel> getPictures()
         {
-            return _dal.getPictures(null, null, null, null);
+            return _dal.getPictures();
         }
         public void savePicture(PictureModel picture)
         {
@@ -34,14 +32,7 @@ namespace picDb
         }
         public void sync()
         {
-            var files = Directory.GetFiles(Folder, "*.*", SearchOption.AllDirectories);
-
-            List<string> imageFiles = new List<string>();
-            foreach (string filename in files)
-            {
-                if (Regex.IsMatch(filename, @".jpg|.png|.gif$"))
-                    imageFiles.Add(filename);
-            }
+            _dal.sync();         
         }
 
         public PhotographerModel getPhotographer(int ID)

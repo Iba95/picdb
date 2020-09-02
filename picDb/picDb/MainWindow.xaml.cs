@@ -1,6 +1,7 @@
 ﻿using picDb.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,29 @@ namespace picDb
             _controller = new MainWindowViewModel();
             InitializeComponent();
             this.DataContext = _controller;
+        }
+
+        private void TextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key != System.Windows.Input.Key.Enter) return;
+
+            // your event handler here
+            e.Handled = true;
+
+            ObservableCollection<PictureViewModel> filteredList = new ObservableCollection<PictureViewModel>();
+            foreach (PictureViewModel viewModel in _controller.PicList.Pics)
+            {
+                //if (viewModel.FileName.ToLower().Contains(Searchbox.Text.ToLower()))
+                //{
+                    filteredList.Add(viewModel);
+                //}
+            }
+            _controller.PicList.Pics = filteredList;
+        }
+
+        private void helpClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Bin selber Lost");
         }
     }
 }

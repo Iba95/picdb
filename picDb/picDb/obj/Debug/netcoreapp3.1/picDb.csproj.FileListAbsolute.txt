@@ -29,3 +29,6 @@ C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netco
 C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\SshNet.Security.Cryptography.dll
 C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
 C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\picDb.csproj.CopyComplete
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\PictureListComponent.g.cs
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\PictureListComponent.baml
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs

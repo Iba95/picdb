@@ -4,25 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:picDb"
+        xmlns:component="clr-namespace:picDb"
         mc:Ignorable="d"
-        Title="{Binding Path=Title}" Height="445" Width="800" Background="Black" WindowStyle="SingleBorderWindow">
+        Title="picdb" Height="445" Width="800" Background="Black" WindowStyle="SingleBorderWindow">
     <DockPanel>
         <Menu DockPanel.Dock="Top" Padding="5">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
             <MenuItem Header="File">
                 <MenuItem Header="Sync"></MenuItem>
             </MenuItem>
             <MenuItem Header="Edit"/>
             <MenuItem Header="Options"/>
-            <MenuItem Header="Help" HorizontalAlignment="Stretch"/>
+            <MenuItem Header="Help" HorizontalAlignment="Right" Click="helpClick"/>
         </Menu>
-        
-            <TextBox DockPanel.Dock="Top" x:Name="Searchbox" TextWrapping="Wrap"/>
-          
-        
 
-        
+        <TextBox DockPanel.Dock="Top" x:Name="Searchbox" TextWrapping="Wrap" KeyUp="TextBox_KeyUp"/>
 
-        <TabControl x:Name="tabControl"   Width="112" DockPanel.Dock="Right" HorizontalAlignment="Right">
+
+        <component:PictureListComponent DockPanel.Dock="Bottom"></component:PictureListComponent>
+
+
+        <TabControl x:Name="tabControl"  Width="200" DockPanel.Dock="Right" HorizontalAlignment="Right">
                 <TabItem Header="TabItem">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
@@ -30,14 +36,7 @@
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
         </TabControl>
-        <Image x:Name="image" Source="{Binding TestImage}" />
+        <Image x:Name="image" Source="{Binding CurrentPicture.FileName}" />
         
-
-
-
-
-
-
-
     </DockPanel>
 </Window>

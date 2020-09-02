@@ -5,7 +5,7 @@ using System.Text;
 
 namespace picDb.ViewModels
 {
-    class EXIFViewModel
+    public class EXIFViewModel
     {
         public double ExifVersion { get; set; }
         public string Make { get; set; }
