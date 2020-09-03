@@ -8,7 +8,7 @@ namespace picDb.Models
 {
     public class PhotographerModel
     {
-        public int ID { get; private set; }
+        public int ID { get; set; }
 
         private string _firstName;
 
@@ -58,7 +58,9 @@ namespace picDb.Models
             ID = pvm.ID;
             FirstName = pvm.FirstName;
             LastName = pvm.LastName;
+            Notes = pvm.Notes;
             Birthday = pvm.Birthday;
         }
+
     }
 }

@@ -177,6 +177,16 @@ namespace picDb
             cmd2.Prepare();
             cmd2.ExecuteScalar();
 
+            //Third Section
+            var stm3 = "UPDATE `picturemodel` SET Photographer = @PID WHERE ID = @ID;";
+            var cmd3 = new MySqlCommand(stm3, con);
+            if (picture.Photographer != null)
+            {
+                cmd3.Parameters.AddWithValue("@ID", picture.ID);
+                cmd3.Parameters.AddWithValue("@PID", picture.Photographer.ID);
+                cmd3.Prepare();
+                cmd3.ExecuteScalar();
+            }
 
         }
         public void deletePicture(int ID)
@@ -279,6 +289,7 @@ namespace picDb
             while (rdr.Read())
             {
                 PhotographerModel photographer = new PhotographerModel();
+                photographer.ID = rdr.GetInt32("ID");
                 photographer.FirstName = rdr.GetString("FirstName");
                 photographer.LastName = rdr.GetString("LastName");
                 photographer.Birthday = DateTime.Parse(rdr["Birthday"].ToString());

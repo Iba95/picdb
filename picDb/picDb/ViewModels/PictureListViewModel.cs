@@ -59,10 +59,10 @@ namespace picDb.ViewModels
             int firstModelID = _pics.First().ID;
             CurrentPicture = new PictureViewModel(_bl.getPicture(firstModelID));
         }
-        public void ResetList()
-        {
-            _pics = new ObservableCollection<PictureViewModel>(_backupList);
-        }
+        //public void ResetList()
+        //{
+        //    _pics = new ObservableCollection<PictureViewModel>(_backupList);
+        //}
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

@@ -14,7 +14,7 @@ namespace picDb.ViewModels
 
         public PictureListViewModel PicList { get; set; } = new PictureListViewModel();
         public SearchViewModel Search { get; set; } = new SearchViewModel();
-        public PhotographerListViewModel PhotographerList { get; set; } = new PhotographerListViewModel();
+        public PhotographerListViewModel PhotographersList { get; set; } = new PhotographerListViewModel();
 
         public MainWindowViewModel()
         {
@@ -24,6 +24,12 @@ namespace picDb.ViewModels
         public void updatePic()
         {
             _bl.updatePicture(new PictureModel(CurrentPicture));
+        }
+        
+        public void SavePicPhotographer(PhotographerViewModel pvm)
+        {
+            CurrentPicture.Photographer = new PhotographerModel(pvm);
+            updatePic();
         }
         public PictureViewModel CurrentPicture
         {

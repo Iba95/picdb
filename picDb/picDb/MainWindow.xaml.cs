@@ -33,14 +33,19 @@ namespace picDb
         private void TextBox_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
             if (e.Key != System.Windows.Input.Key.Enter) return;
-
             // your event handler here
             e.Handled = true;
 
             ObservableCollection<PictureViewModel> filteredList = new ObservableCollection<PictureViewModel>();
-
             //_controller.Search.Term = Searchbox.Text;
             _controller.PicList.getPics(_controller.Search.Term);
+        }
+
+        private void btnSavePicPhotographer(object sender, RoutedEventArgs e)
+        {
+            //var PhotographerViewModel = (PhotographerViewModel)PhotographersListBox.SelectedItem;
+            var photographer = _controller.PhotographersList.CurrentPhotographer;
+            _controller.SavePicPhotographer(photographer);
         }
 
         private void btnSave(object sender, RoutedEventArgs e)

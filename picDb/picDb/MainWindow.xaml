@@ -31,19 +31,44 @@
         <TabControl x:Name="tabControl"  Width="300" DockPanel.Dock="Right" HorizontalAlignment="Right">
             <TabItem Header="Information">
                 <Grid Background="#FFE5E5E5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                        <RowDefinition Height="25"/>
-                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="Photographer" Grid.Row="0" Grid.Column="0"/>
-                    <Label Content="{Binding CurrentPicture.Photographer.FirstName}" Grid.Row="0" Grid.Column="1"/>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Photographer:" Grid.Row="0" Grid.Column="0"/>
+                    <Label Grid.Row="0" Grid.Column="1">
+                        <Label.Content>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="CurrentPicture.Photographer.FirstName" />
+                                        <Binding Path="CurrentPicture.Photographer.LastName" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </Label.Content>
+                    </Label>
+                    <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="PhotographersListBox"
+                             ItemsSource="{Binding Path=PhotographersList.Photographers}" SelectedItem="{Binding Path=PhotographersList.CurrentPhotographer}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Margin="2" Grid.Column="0" Text="{Binding LastName}" />
+                                    <TextBlock Margin="2" Grid.Column="1" Text="{Binding FirstName}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button Grid.Row="2" Grid.Column="0" Content="Save" Click="btnSavePicPhotographer"></Button>
                 </Grid>
             </TabItem>
             <TabItem Header="EXIF">

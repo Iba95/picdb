@@ -21,7 +21,8 @@ namespace picDb.ViewModels
             ID = photographer.ID;
             FirstName = photographer.FirstName;
             LastName = photographer.LastName;
-            
+            Birthday = photographer.Birthday;
+            Notes = photographer.Notes;
         }
       
 
