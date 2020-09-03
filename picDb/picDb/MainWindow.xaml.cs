@@ -38,14 +38,14 @@ namespace picDb
             e.Handled = true;
 
             ObservableCollection<PictureViewModel> filteredList = new ObservableCollection<PictureViewModel>();
-            foreach (PictureViewModel viewModel in _controller.PicList.Pics)
-            {
-                //if (viewModel.FileName.ToLower().Contains(Searchbox.Text.ToLower()))
-                //{
-                    filteredList.Add(viewModel);
-                //}
-            }
-            _controller.PicList.Pics = filteredList;
+
+            //_controller.Search.Term = Searchbox.Text;
+            _controller.PicList.getPics(_controller.Search.Term);
+        }
+
+        private void btnSave(object sender, RoutedEventArgs e)
+        {
+            _controller.updatePic();
         }
 
         private void helpClick(object sender, RoutedEventArgs e)

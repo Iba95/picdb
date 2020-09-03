@@ -20,7 +20,7 @@ namespace picDb.ViewModels
         public PictureListViewModel()
         {
             _bl = new BL();
-            getPics();
+            getPics(null);
         }
         public PictureViewModel CurrentPicture
         {
@@ -43,28 +43,21 @@ namespace picDb.ViewModels
                 OnPropertyChanged("Pics");
             }
         }
-        public void getPics()
+        public void getPics(string term)
         {
             _bl.sync();
-            //var pictures = bl.getPictures();
-            //CurrentPicture = null;
-            //_pics.Clear();
-            //foreach (PictureModel model in pictures)
-            //{
-            //    _pics.Add(new PictureViewModel((PictureModel)model));
-            //}
-            //_backupList = new ObservableCollection<PictureViewModel>(_pics);
-
-            //int firstModelID = _pics.First().ID;
-            //CurrentPicture = new PictureViewModel(bl.getPicture(firstModelID));
-            var pics = _bl.getPictures();
+            _pics.Clear();
+            var pics = new List<PictureModel>();
+            if (!string.IsNullOrEmpty(term))
+                 pics = _bl.getPictures(term).ToList();
+            else
+                 pics = _bl.getPictures().ToList(); ;
             foreach(PictureModel pic in pics)
             {
                 _pics.Add(new PictureViewModel((PictureModel)pic));
             }
             int firstModelID = _pics.First().ID;
             CurrentPicture = new PictureViewModel(_bl.getPicture(firstModelID));
-
         }
         public void ResetList()
         {

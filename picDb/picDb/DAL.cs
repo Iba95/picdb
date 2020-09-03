@@ -82,6 +82,40 @@ namespace picDb
             return pics;
         }
 
+        public List<PictureModel> getPictures(string term)
+        {
+            var con = new MySqlConnection(connstr);
+            con.Open();
+            var stm = "SELECT picturemodel.ID,FileName, ExifVersion, Make, FNUmber, "+
+                "ExposureTime, ISOSpeed, Title, Caption, CopyrightNotice, Creator, Keywords, Photographer "+
+                "FROM `picturemodel` JOIN exifmodel ON EXIF = exifmodel.ID JOIN iptcmodel ON IPTC = iptcmodel.ID "+
+                "left JOIN photographer ON Photographer = photographer.ID WHERE FileName LIKE @term OR ExifVersion = @term " +
+                "OR Title LIKE @term OR Make LIKE @term  OR FNUmber = @term OR ExposureTime = @term OR ISOSpeed = @term " +
+                "OR Caption LIKE @term OR CopyrightNotice LIKE @term OR Creator LIKE @term OR Keywords LIKE @term " +
+                "OR FirstName LIKE @term OR LastName LIKE @term OR Notes LIKE @term";
+            var cmd = new MySqlCommand(stm, con);
+
+            cmd.Parameters.AddWithValue("@term", "%"+ term + "%");
+            cmd.Prepare();
+
+            using MySqlDataReader rdr = cmd.ExecuteReader();
+            List<PictureModel> pics = new List<PictureModel>();
+
+            while (rdr.Read())
+            {
+                PictureModel pic = new PictureModel();
+                pic.ID = rdr.GetInt32("ID");
+                pic.FileName = rdr.GetString("FileName");
+                pic.EXIF = new EXIFModel();
+                pic.IPTC = new IPTCModel();
+                pic.Photographer = new PhotographerModel();
+
+                pics.Add(pic);
+            }
+            return pics;
+
+        }
+
         public void savePicture(PictureModel picture)
         {
             var con = new MySqlConnection(connstr);
@@ -100,13 +134,49 @@ namespace picDb
 
             int idIPTC = Convert.ToInt32(cmdIPTC.ExecuteScalar());
 
-            var stmPic = "INSERT INTO `picturemodel`(`FileName`, `EXIF`, `IPTC`, `Photographer`) VALUES (@FileName,1,@IPTC,1);";
+            var stmPic = "INSERT INTO `picturemodel`(`FileName`, `EXIF`, `IPTC`) VALUES (@FileName,1,@IPTC);";
             var cmdPic = new MySqlCommand(stmPic, con);
 
             cmdPic.Parameters.AddWithValue("@FileName", picture.FileName);
             cmdPic.Parameters.AddWithValue("@IPTC", idIPTC);
             cmdPic.Prepare();
             cmdPic.ExecuteScalar();
+
+        }
+        public void updatePicture(PictureModel picture)
+        {
+            var con = new MySqlConnection(connstr);
+            con.Open();
+            //First Section
+            var stm1 = "Select IPTC FROM `picturemodel` WHERE ID = @ID;";
+            var cmd1 = new MySqlCommand(stm1, con);
+
+            cmd1.Parameters.AddWithValue("@ID", picture.ID);
+            cmd1.Prepare();
+
+            using MySqlDataReader rdr = cmd1.ExecuteReader();
+            PictureModel pic = new PictureModel();
+            int idIPTC = 0;
+            while (rdr.Read())
+            {
+                idIPTC = rdr.GetInt32("IPTC");
+            }
+            rdr.Close();
+
+            //Second Section
+            var stm2 = "UPDATE `iptcmodel` SET Title = @Title, Caption = @Caption, CopyrightNotice = @CopyrightNotice, " +
+                "Creator = @Creator, Keywords = @Keywords WHERE ID = @ID;";
+            var cmd2 = new MySqlCommand(stm2, con);
+
+            cmd2.Parameters.AddWithValue("@ID", idIPTC);
+            cmd2.Parameters.AddWithValue("@Title", picture.IPTC.Title);
+            cmd2.Parameters.AddWithValue("@Caption", picture.IPTC.Caption);
+            cmd2.Parameters.AddWithValue("@CopyrightNotice", picture.IPTC.CopyrightNotice);
+            cmd2.Parameters.AddWithValue("@Creator", picture.IPTC.Creator);
+            cmd2.Parameters.AddWithValue("@Keywords", picture.IPTC.Keywords);
+            cmd2.Prepare();
+            cmd2.ExecuteScalar();
+
 
         }
         public void deletePicture(int ID)

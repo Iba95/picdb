@@ -22,9 +22,17 @@ namespace picDb
         {
             return _dal.getPictures();
         }
+        public IEnumerable<PictureModel> getPictures(string term)
+        {
+            return _dal.getPictures(term);
+        }
         public void savePicture(PictureModel picture)
         {
             _dal.savePicture(picture);
+        }
+        public void updatePicture(PictureModel picture)
+        {
+            _dal.updatePicture(picture);
         }
         public void deletePicture(int ID)
         {

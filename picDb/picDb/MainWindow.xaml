@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:picDb"
         xmlns:component="clr-namespace:picDb"
         mc:Ignorable="d"
-        Title="picdb" Height="445" Width="800" Background="Black" WindowStyle="SingleBorderWindow">
+        Title="picdb" Height="445" Width="800" Background="White" WindowStyle="SingleBorderWindow">
     <DockPanel>
         <Menu DockPanel.Dock="Top" Padding="5">
             <Menu.ItemsPanel>
@@ -22,21 +22,93 @@
             <MenuItem Header="Help" HorizontalAlignment="Right" Click="helpClick"/>
         </Menu>
 
-        <TextBox DockPanel.Dock="Top" x:Name="Searchbox" TextWrapping="Wrap" KeyUp="TextBox_KeyUp"/>
+        <TextBox DockPanel.Dock="Top" x:Name="Searchbox" Text="{Binding Path=Search.Term, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" KeyUp="TextBox_KeyUp" Height="25" FontSize="16"/>
 
 
         <component:PictureListComponent DockPanel.Dock="Bottom"></component:PictureListComponent>
 
 
-        <TabControl x:Name="tabControl"  Width="200" DockPanel.Dock="Right" HorizontalAlignment="Right">
-                <TabItem Header="TabItem">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
-                <TabItem Header="TabItem">
-                    <Grid Background="#FFE5E5E5"/>
-                </TabItem>
+        <TabControl x:Name="tabControl"  Width="300" DockPanel.Dock="Right" HorizontalAlignment="Right">
+            <TabItem Header="Information">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Photographer" Grid.Row="0" Grid.Column="0"/>
+                    <Label Content="{Binding CurrentPicture.Photographer.FirstName}" Grid.Row="0" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="EXIF">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="ExifVersion:" Grid.Row="0" Grid.Column="0"/>
+                    <Label Content="{Binding CurrentPicture.EXIF.ExifVersion}" Grid.Row="0" Grid.Column="1"/>
+
+                    <Label Content="Make:" Grid.Row="1" Grid.Column="0"/>
+                    <Label Content="{Binding CurrentPicture.EXIF.Make}" Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Content="FNumber:" Grid.Row="2" Grid.Column="0"/>
+                    <Label Content="{Binding CurrentPicture.EXIF.FNumber}" Grid.Row="2" Grid.Column="1"/>
+
+                    <Label Content="ExposureTime:" Grid.Row="3" Grid.Column="0"/>
+                    <Label Content="{Binding CurrentPicture.EXIF.ExposureTime}" Grid.Row="3" Grid.Column="1"/>
+
+                    <Label Content="ISOSpeed:" Grid.Row="4" Grid.Column="0"/>
+                    <Label Content="{Binding CurrentPicture.EXIF.ISOSpeed}" Grid.Row="4" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="IPTC">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Content="Title:" Grid.Row="0" Grid.Column="0"/>
+                    <TextBox Text="{Binding CurrentPicture.IPTC.Title}" Grid.Row="0" Grid.Column="1"/>
+
+                    <Label Content="Caption:" Grid.Row="1" Grid.Column="0"/>
+                    <TextBox Text="{Binding CurrentPicture.IPTC.Caption}" Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Content="CopyrightNotice:" Grid.Row="2" Grid.Column="0"/>
+                    <TextBox Text="{Binding CurrentPicture.IPTC.CopyrightNotice}" Grid.Row="2" Grid.Column="1"/>
+
+                    <Label Content="Creator:" Grid.Row="3" Grid.Column="0"/>
+                    <TextBox Text="{Binding CurrentPicture.IPTC.Creator}" Grid.Row="3" Grid.Column="1"/>
+
+                    <Label Content="Keywords:" Grid.Row="4" Grid.Column="0"/>
+                    <TextBox Text="{Binding CurrentPicture.IPTC.Keywords}" Grid.Row="4" Grid.Column="1"/>
+
+                    <Button Content="Save" Click="btnSave" Grid.Row="5" Grid.Column="1" Margin="0,10,0,0"/>
+                </Grid>
+            </TabItem>
         </TabControl>
         <Image x:Name="image" Source="{Binding CurrentPicture.FileName}" />
-        
+
     </DockPanel>
 </Window>

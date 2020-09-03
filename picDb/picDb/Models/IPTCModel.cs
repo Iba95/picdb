@@ -29,5 +29,10 @@ namespace picDb.Models
             Creator = iptcvm.Creator;
             Keywords = iptcvm.Keywords;
         }
+
+        public static implicit operator IPTCModel(IPTCViewModel v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

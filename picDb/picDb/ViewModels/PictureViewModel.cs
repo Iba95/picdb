@@ -17,15 +17,18 @@ namespace picDb.ViewModels
         {
             //if (picture is PictureModel)
             //{
-            //    IPTC = new IPTCViewModel(picture.IPTC);
-            //    EXIF = new EXIFViewModel(picture.EXIF);
-            //    Photographer = new PhotographerViewModel(picture.Photographer);
+            //    IPTC = new IPTCViewModel((IPTCModel)picture.IPTC);
+            //    EXIF = new EXIFViewModel((EXIFModel)picture.EXIF);
+            //    Photographer = new PhotographerViewModel((PhotographerModel)picture.Photographer);
             //}
 
             if (picture != null)
             {
                 ID = picture.ID;
                 FileName = picture.FileName;
+                EXIF = picture.EXIF;
+                IPTC = picture.IPTC;
+                Photographer = picture.Photographer;
                 string name = picture.FileName;
                 string creator = picture.IPTC.Creator;
             }

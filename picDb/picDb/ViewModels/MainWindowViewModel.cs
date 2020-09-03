@@ -1,4 +1,5 @@
-﻿using System;
+﻿using picDb.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -9,7 +10,6 @@ namespace picDb.ViewModels
     public class MainWindowViewModel: INotifyPropertyChanged
     {
         private readonly BL _bl = new BL();
-        private string _testImage;
         private PictureViewModel _currentPicture;
 
         public PictureListViewModel PicList { get; set; } = new PictureListViewModel();
@@ -19,20 +19,11 @@ namespace picDb.ViewModels
         public MainWindowViewModel()
         {
             CurrentPicture = PicList.CurrentPicture;
-            //TestImage = _bl.getPicture(3).FileName;
-            //_bl.getPictures();
         }
 
-        public string TestImage
+        public void updatePic()
         {
-            get
-            {
-                return _testImage;
-            }
-            set
-            {
-                _testImage = value;
-            }
+            _bl.updatePicture(new PictureModel(CurrentPicture));
         }
         public PictureViewModel CurrentPicture
         {
