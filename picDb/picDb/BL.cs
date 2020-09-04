@@ -34,6 +34,10 @@ namespace picDb
         {
             _dal.updatePicture(picture);
         }
+        public void updatePicturePhotographer(PictureModel picture)
+        {
+            _dal.updatePicturePhotographer(picture);
+        }
         public void deletePicture(int ID)
         {
             _dal.deletePicture(ID);

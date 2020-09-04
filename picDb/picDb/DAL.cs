@@ -30,7 +30,7 @@ namespace picDb
             var stm = "SELECT picturemodel.ID,FileName, ExifVersion, Make, FNUmber, " +
                 "ExposureTime, ISOSpeed, Title, Caption, CopyrightNotice, Creator, Keywords, Photographer " +
                 "FROM `picturemodel` JOIN exifmodel ON EXIF = exifmodel.ID JOIN iptcmodel ON IPTC = iptcmodel.ID " +
-                "JOIN photographer ON Photographer = photographer.ID Where picturemodel.ID = @ID;";
+                "Where picturemodel.ID = @ID;";
             var cmd = new MySqlCommand(stm, con);
 
             cmd.Parameters.AddWithValue("@ID", ID);
@@ -53,7 +53,8 @@ namespace picDb
                 pic.IPTC.CopyrightNotice = rdr.GetString("CopyrightNotice");
                 pic.IPTC.Creator = rdr.GetString("Creator");
                 pic.IPTC.Keywords = rdr.GetString("Keywords");
-                pic.Photographer = getPhotographer(rdr.GetInt32("Photographer"));
+                if(!rdr.IsDBNull("Photographer")) pic.Photographer = getPhotographer(rdr.GetInt32("Photographer"));
+                //pic.Photographer = rdr.IsDBNull(Photographer) ? null : rdr.GetInt32("Photographer");
             }
             return pic;
         }
@@ -177,17 +178,19 @@ namespace picDb
             cmd2.Prepare();
             cmd2.ExecuteScalar();
 
-            //Third Section
+        }
+        public void updatePicturePhotographer(PictureModel picture)
+        {
+            var con = new MySqlConnection(connstr);
+            con.Open();
+
             var stm3 = "UPDATE `picturemodel` SET Photographer = @PID WHERE ID = @ID;";
             var cmd3 = new MySqlCommand(stm3, con);
-            if (picture.Photographer != null)
-            {
-                cmd3.Parameters.AddWithValue("@ID", picture.ID);
-                cmd3.Parameters.AddWithValue("@PID", picture.Photographer.ID);
-                cmd3.Prepare();
-                cmd3.ExecuteScalar();
-            }
 
+            cmd3.Parameters.AddWithValue("@ID", picture.ID);
+            cmd3.Parameters.AddWithValue("@PID", picture.Photographer.ID);
+            cmd3.Prepare();
+            cmd3.ExecuteScalar();
         }
         public void deletePicture(int ID)
         {

@@ -15,8 +15,8 @@ namespace picDb.Models
         public PictureModel()
         {
             EXIF = new EXIFModel();
-            IPTC = new IPTCModel();           
-            //Photographer = new PhotographerModel();
+            IPTC = new IPTCModel();
+            Photographer = new PhotographerModel();
         }
         public PictureModel(PictureViewModel picturevm)
         {
@@ -24,7 +24,7 @@ namespace picDb.Models
             FileName = picturevm.FileName;
             EXIF = picturevm.EXIF;
             IPTC = picturevm.IPTC;
-            Photographer = picturevm.Photographer;
+            if(picturevm.Photographer != null) Photographer = new PhotographerModel(picturevm.Photographer);
         }
     }
 }

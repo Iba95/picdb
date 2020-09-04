@@ -11,7 +11,7 @@ namespace picDb.ViewModels
         public string FileName { get; set; }
         public EXIFModel EXIF { get; set; }
         public IPTCModel IPTC { get; set; }
-        public PhotographerModel Photographer { get; set; }
+        public PhotographerViewModel Photographer { get; set; }
 
         public PictureViewModel(PictureModel picture)
         {
@@ -28,7 +28,7 @@ namespace picDb.ViewModels
                 FileName = picture.FileName;
                 EXIF = picture.EXIF;
                 IPTC = picture.IPTC;
-                Photographer = picture.Photographer;
+                Photographer = new PhotographerViewModel(picture.Photographer);
                 string name = picture.FileName;
                 string creator = picture.IPTC.Creator;
             }

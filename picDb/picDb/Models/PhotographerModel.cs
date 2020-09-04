@@ -24,7 +24,7 @@ namespace picDb.Models
                 {
                     return _firstName;
                 }
-                return "no value";
+                return "";
             }
             set
             {
@@ -42,7 +42,7 @@ namespace picDb.Models
                 {
                     return _lastName;
                 }
-                return "no value";
+                return "";
             }
             set
             {

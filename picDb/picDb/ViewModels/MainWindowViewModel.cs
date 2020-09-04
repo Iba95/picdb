@@ -28,8 +28,8 @@ namespace picDb.ViewModels
         
         public void SavePicPhotographer(PhotographerViewModel pvm)
         {
-            CurrentPicture.Photographer = new PhotographerModel(pvm);
-            updatePic();
+            CurrentPicture.Photographer = pvm;
+            _bl.updatePicturePhotographer(new PictureModel(CurrentPicture));
         }
         public PictureViewModel CurrentPicture
         {
@@ -46,9 +46,9 @@ namespace picDb.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private void OnPropertyChanged(string propertyName)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

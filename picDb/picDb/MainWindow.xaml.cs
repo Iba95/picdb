@@ -1,4 +1,5 @@
 ﻿using picDb.ViewModels;
+using picDb.Windows;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -51,6 +52,19 @@ namespace picDb
         private void btnSave(object sender, RoutedEventArgs e)
         {
             _controller.updatePic();
+        }
+
+        private void editPhotographers(object sender, RoutedEventArgs e)
+        {
+            var epWindow = new PhotographerEdit(_controller);
+
+            epWindow.Show();
+        }
+        private void addPhotographer(object sender, RoutedEventArgs e)
+        {
+            //var epWindow = new PhotographerEdit(_controller);
+
+            //epWindow.Show();
         }
 
         private void helpClick(object sender, RoutedEventArgs e)

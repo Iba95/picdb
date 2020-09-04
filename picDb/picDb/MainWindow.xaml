@@ -15,9 +15,12 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem Header="File">
-                <MenuItem Header="Sync"></MenuItem>
+               
             </MenuItem>
-            <MenuItem Header="Edit"/>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Edit Photographers" Click="editPhotographers"></MenuItem>
+                <MenuItem Header="Add Photographer" Click="addPhotographer"></MenuItem>
+            </MenuItem>
             <MenuItem Header="Options"/>
             <MenuItem Header="Help" HorizontalAlignment="Right" Click="helpClick"/>
         </Menu>

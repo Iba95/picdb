@@ -20,7 +20,6 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <!--<Image Width="120" Height="120" Stretch="UniformToFill">-->
                         <Image Width="120" Height="120" Stretch="UniformToFill">
                             <Image.Source>
                                 <BitmapImage DecodePixelWidth="200" UriSource="{Binding FileName}" />
