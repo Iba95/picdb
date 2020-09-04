@@ -9,7 +9,7 @@ namespace picDb.ViewModels
 {
     public class SearchViewModel: INotifyPropertyChanged
     {
-        private string _term;
+        private string _term = "Search...";
         public string Term
         {
             get => _term;

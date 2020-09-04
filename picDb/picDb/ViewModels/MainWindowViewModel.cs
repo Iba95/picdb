@@ -19,17 +19,24 @@ namespace picDb.ViewModels
         public MainWindowViewModel()
         {
             CurrentPicture = PicList.CurrentPicture;
+            
         }
 
         public void updatePic()
         {
             _bl.updatePicture(new PictureModel(CurrentPicture));
         }
-        
-        public void SavePicPhotographer(PhotographerViewModel pvm)
+
+        public void updatePhotographer()
         {
-            CurrentPicture.Photographer = pvm;
+            _bl.updatePhotographer(new PhotographerModel(PhotographersList.CurrentPhotographer));
+        }
+
+        public void SavePicPhotographer()
+        {
+            ((PictureViewModel)CurrentPicture).Photographer = PhotographersList.CurrentPhotographer;
             _bl.updatePicturePhotographer(new PictureModel(CurrentPicture));
+            
         }
         public PictureViewModel CurrentPicture
         {
@@ -40,7 +47,7 @@ namespace picDb.ViewModels
                 {
                     _currentPicture = new PictureViewModel(_bl.getPicture(value.ID));
                     ((PictureListViewModel)PicList).CurrentPicture = _currentPicture;                
-                    OnPropertyChanged(nameof(CurrentPicture));
+                    OnPropertyChanged("CurrentPicture");
                 }
             }
         }
@@ -48,7 +55,7 @@ namespace picDb.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propertyName)
         {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

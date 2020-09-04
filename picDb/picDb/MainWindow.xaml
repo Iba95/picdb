@@ -25,7 +25,8 @@
             <MenuItem Header="Help" HorizontalAlignment="Right" Click="helpClick"/>
         </Menu>
 
-        <TextBox DockPanel.Dock="Top" x:Name="Searchbox" Text="{Binding Path=Search.Term, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" KeyUp="TextBox_KeyUp" Height="25" FontSize="16"/>
+        <TextBox DockPanel.Dock="Top" x:Name="Searchbox" Text="{Binding Path=Search.Term, UpdateSourceTrigger=PropertyChanged}" 
+                 TextWrapping="Wrap" KeyUp="TextBox_KeyUp" Height="25" FontSize="16" GotFocus="SearchEmpty" LostFocus="SearchPlaceholder"/>
 
 
         <component:PictureListComponent DockPanel.Dock="Bottom"></component:PictureListComponent>
@@ -39,6 +40,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="25"/>
@@ -56,8 +58,10 @@
                             </TextBlock>
                         </Label.Content>
                     </Label>
-                    <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="PhotographersListBox"
-                             ItemsSource="{Binding Path=PhotographersList.Photographers}" SelectedItem="{Binding Path=PhotographersList.CurrentPhotographer}">
+                    <Label Content="Notes:" Grid.Row="1" Grid.Column="0"/>
+                    <Label Content="{Binding CurrentPicture.Photographer.Notes}" Grid.Row="1" Grid.Column="1"/>
+                    <ListBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Name="PhotographersListBox"
+                             ItemsSource="{Binding Path=PhotographersList.Photographers}" SelectedItem="{Binding PhotographersList.CurrentPhotographer}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
@@ -71,7 +75,7 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                    <Button Grid.Row="2" Grid.Column="0" Content="Save" Click="btnSavePicPhotographer"></Button>
+                    <Button Grid.Row="3" Grid.Column="0" Content="Save" Click="btnSavePicPhotographer"></Button>
                 </Grid>
             </TabItem>
             <TabItem Header="EXIF">

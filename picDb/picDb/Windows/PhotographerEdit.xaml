@@ -7,6 +7,49 @@
         mc:Ignorable="d"
         Title="PhotographerEdit" Height="250" Width="500">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0">First Name: </Label>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding PhotographersList.CurrentPhotographer.FirstName}"/>
+
+        <Label Grid.Row="1" Grid.Column="0">Last Name:</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding PhotographersList.CurrentPhotographer.LastName}"/>
+
+        <Label Grid.Row="2" Grid.Column="0">Birthday:</Label>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PhotographersList.CurrentPhotographer.Birthday}"/>
+
+        <Label Grid.Row="3" Grid.Column="0">Notes:</Label>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding PhotographersList.CurrentPhotographer.Notes}"/>
+
+        <Button Grid.Row="4" Grid.Column="1" Click="SavePhotographer" Margin="0,15,0,0">Save</Button>
+
+
+        <ListBox Grid.RowSpan="6" Grid.Column="2" Name="PhotographersListBox"
+                             ItemsSource="{Binding Path=PhotographersList.Photographers}" SelectedItem="{Binding PhotographersList.CurrentPhotographer}" Margin="10,0,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="2" Grid.Column="0" Text="{Binding LastName}" />
+                        <TextBlock Margin="2" Grid.Column="1" Text="{Binding FirstName}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

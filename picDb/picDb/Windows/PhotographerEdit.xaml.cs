@@ -23,7 +23,12 @@ namespace picDb.Windows
         {
             _controller = controller;
             InitializeComponent();
-            _controller = controller;
+            this.DataContext = _controller;
+        }   
+
+        private void SavePhotographer(object sender, RoutedEventArgs e)
+        {
+            _controller.updatePhotographer();
         }
     }
 }

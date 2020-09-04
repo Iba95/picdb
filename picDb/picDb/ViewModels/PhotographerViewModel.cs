@@ -12,8 +12,8 @@ namespace picDb.ViewModels
         public string LastName { get; set; }
         public DateTime? Birthday { get; set; }
         public string Notes { get; set; }
-        bool IsValid { get; }
-        string ValidationSummary { get; }
+        //bool IsValid { get; }
+        //string ValidationSummary { get; }
 
         public PhotographerViewModel(PhotographerModel photographer)
         {

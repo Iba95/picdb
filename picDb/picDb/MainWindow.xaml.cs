@@ -45,8 +45,7 @@ namespace picDb
         private void btnSavePicPhotographer(object sender, RoutedEventArgs e)
         {
             //var PhotographerViewModel = (PhotographerViewModel)PhotographersListBox.SelectedItem;
-            var photographer = _controller.PhotographersList.CurrentPhotographer;
-            _controller.SavePicPhotographer(photographer);
+            _controller.SavePicPhotographer();
         }
 
         private void btnSave(object sender, RoutedEventArgs e)
@@ -62,14 +61,27 @@ namespace picDb
         }
         private void addPhotographer(object sender, RoutedEventArgs e)
         {
-            //var epWindow = new PhotographerEdit(_controller);
-
-            //epWindow.Show();
+            MessageBox.Show("Nicht implementiert");
         }
 
         private void helpClick(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Bin selber Lost");
+        }
+
+        private void SearchEmpty(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Searchbox.Text))
+            {
+                Searchbox.Text = string.Empty;
+            }
+        }
+        private void SearchPlaceholder(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Searchbox.Text))
+            {
+                Searchbox.Text = "Search...";
+            }
         }
     }
 }
