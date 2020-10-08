@@ -51,7 +51,7 @@ namespace picDb.ViewModels
             if (!string.IsNullOrEmpty(term))
                  pics = _bl.getPictures(term).ToList();
             else
-                 pics = _bl.getPictures().ToList(); ;
+                 pics = _bl.getPictures().ToList(); 
             foreach(PictureModel pic in pics)
             {
                 _pics.Add(new PictureViewModel((PictureModel)pic));

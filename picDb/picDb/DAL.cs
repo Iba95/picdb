@@ -46,7 +46,7 @@ namespace picDb
                 pic.EXIF.ExifVersion = rdr.GetInt32("ExifVersion");
                 pic.EXIF.Make = rdr.GetString("Make");
                 pic.EXIF.FNumber = rdr.GetInt32("FNUmber");
-                pic.EXIF.ExposureTime = rdr.GetInt32("ExposureTime");
+                pic.EXIF.ExposureTime = double.Parse(rdr.GetString("ExposureTime"));
                 pic.EXIF.ISOSpeed = rdr.GetInt32("ISOSpeed");
                 pic.IPTC.Title = rdr.GetString("Title");
                 pic.IPTC.Caption = rdr.GetString("Caption");

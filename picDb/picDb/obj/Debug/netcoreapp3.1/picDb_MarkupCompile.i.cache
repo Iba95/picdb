@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\App.xaml
-3-485793941
+42027991844
 
-20-1361357170
+211655875415
 2031775550396
-MainWindow.xaml;PictureListComponent.xaml;Windows\PhotographerEdit.xaml;
+MainWindow.xaml;PictureListComponent.xaml;Windows\PhotographerAdd.xaml;Windows\PhotographerEdit.xaml;
 
-True
+False
 

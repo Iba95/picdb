@@ -31,17 +31,19 @@ namespace picDb.ViewModels
         }
         public PhotographerListViewModel()
         {
-            SynchronizePhotographers();
+            snycPhotographers();
         }
-        public void SynchronizePhotographers()
+        public void snycPhotographers()
         {
             var bl = new BL();
             var photographers = bl.getPhotographers();
             var pvm = new ObservableCollection<PhotographerViewModel>();
-            foreach (var photographer in photographers)
+
+            foreach (var p in photographers)
             {
-                pvm.Add(new PhotographerViewModel(photographer));
+                pvm.Add(new PhotographerViewModel(p));
             }
+
             Photographers = pvm;
         }
 

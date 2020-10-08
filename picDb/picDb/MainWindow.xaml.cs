@@ -37,7 +37,6 @@ namespace picDb
             // your event handler here
             e.Handled = true;
 
-            ObservableCollection<PictureViewModel> filteredList = new ObservableCollection<PictureViewModel>();
             //_controller.Search.Term = Searchbox.Text;
             _controller.PicList.getPics(_controller.Search.Term);
         }
@@ -61,7 +60,9 @@ namespace picDb
         }
         private void addPhotographer(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Nicht implementiert");
+            var apWindow = new PhotographerAdd(_controller);
+
+            apWindow.Show();
         }
 
         private void helpClick(object sender, RoutedEventArgs e)

@@ -30,12 +30,20 @@ namespace picDb.ViewModels
         public void updatePhotographer()
         {
             _bl.updatePhotographer(new PhotographerModel(PhotographersList.CurrentPhotographer));
+            CurrentPicture = new PictureViewModel(_bl.getPicture(CurrentPicture.ID));
+        }
+
+        public void savePhotographer(PhotographerViewModel photographer)
+        {
+            _bl.savePhotographer(new PhotographerModel(photographer));
+            ((PhotographerListViewModel)PhotographersList).snycPhotographers();
         }
 
         public void SavePicPhotographer()
         {
             ((PictureViewModel)CurrentPicture).Photographer = PhotographersList.CurrentPhotographer;
             _bl.updatePicturePhotographer(new PictureModel(CurrentPicture));
+            CurrentPicture = new PictureViewModel(_bl.getPicture(CurrentPicture.ID));
             
         }
         public PictureViewModel CurrentPicture

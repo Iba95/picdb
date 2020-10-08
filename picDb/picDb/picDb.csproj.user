@@ -10,6 +10,9 @@
     <Compile Update="PictureListComponent.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\PhotographerAdd.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\PhotographerEdit.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,6 +22,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="PictureListComponent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\PhotographerAdd.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\PhotographerEdit.xaml">

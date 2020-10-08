@@ -34,3 +34,5 @@ C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netco
 C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\Windows\PhotographerEdit.g.cs
 C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\Windows\PhotographerEdit.baml
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\Windows\PhotographerAdd.g.cs
+C:\Users\islam\Documents\Arbeit\FH\4 SEM\SWE 2\picdb\picDb\picDb\obj\Debug\netcoreapp3.1\Windows\PhotographerAdd.baml
